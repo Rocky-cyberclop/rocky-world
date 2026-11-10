@@ -1,0 +1,226 @@
+{
+  "name": "interview-room",
+  "room": {
+    "tilesWide": 12,
+    "tilesHigh": 11,
+    "wall": {
+      "rows": [
+        19,
+        20
+      ],
+      "cols": [
+        0,
+        1,
+        2
+      ]
+    },
+    "floor": {
+      "col": 14,
+      "row": 11,
+      "w": 3,
+      "h": 2
+    },
+    "border": {
+      "topLeft": [
+        11,
+        1
+      ],
+      "topRight": [
+        13,
+        1
+      ],
+      "left": [
+        11,
+        2
+      ],
+      "right": [
+        13,
+        2
+      ],
+      "bottomLeft": [
+        11,
+        3
+      ],
+      "bottom": [
+        12,
+        3
+      ],
+      "bottomRight": [
+        13,
+        3
+      ]
+    }
+  },
+  "sprites": {
+    "exec_desk": {
+      "x": 16,
+      "y": 160,
+      "w": 48,
+      "h": 48
+    },
+    "chair_front": {
+      "x": 64,
+      "y": 336,
+      "w": 16,
+      "h": 32
+    },
+    "chair_back": {
+      "x": 64,
+      "y": 608,
+      "w": 16,
+      "h": 32
+    },
+    "bookshelf_a": {
+      "x": 80,
+      "y": 224,
+      "w": 32,
+      "h": 32
+    },
+    "bookshelf_b": {
+      "x": 80,
+      "y": 256,
+      "w": 32,
+      "h": 32
+    },
+    "bar_shelf": {
+      "x": 160,
+      "y": 1088,
+      "w": 32,
+      "h": 48
+    },
+    "globe": {
+      "x": 192,
+      "y": 1056,
+      "w": 16,
+      "h": 32
+    },
+    "world_map": {
+      "x": 160,
+      "y": 1064,
+      "w": 32,
+      "h": 24
+    },
+    "painting": {
+      "x": 128,
+      "y": 360,
+      "w": 32,
+      "h": 24
+    },
+    "fireplace": {
+      "x": 64,
+      "y": 1088,
+      "w": 32,
+      "h": 48
+    },
+    "sofa": {
+      "x": 16,
+      "y": 1152,
+      "w": 48,
+      "h": 32
+    },
+    "coffee_table": {
+      "x": 112,
+      "y": 216,
+      "w": 48,
+      "h": 24
+    },
+    "ottoman": {
+      "x": 48,
+      "y": 1184,
+      "w": 16,
+      "h": 16
+    },
+    "floor_lamp": {
+      "x": 192,
+      "y": 900,
+      "w": 16,
+      "h": 43
+    },
+    "plant_tall": {
+      "x": 168,
+      "y": 704,
+      "w": 24,
+      "h": 48
+    },
+    "plant_small": {
+      "x": 192,
+      "y": 720,
+      "w": 16,
+      "h": 32
+    },
+    "palm": {
+      "x": 208,
+      "y": 704,
+      "w": 32,
+      "h": 32
+    },
+    "window_curtain": {
+      "x": 80,
+      "y": 384,
+      "w": 32,
+      "h": 32
+    },
+    "rug": {
+      "x": 112,
+      "y": 240,
+      "w": 64,
+      "h": 48
+    },
+    "vase": {
+      "x": 16,
+      "y": 1096,
+      "w": 16,
+      "h": 24
+    },
+    "side_table": {
+      "x": 0,
+      "y": 912,
+      "w": 16,
+      "h": 32
+    },
+    "table_lamp": {
+      "x": 224,
+      "y": 864,
+      "w": 16,
+      "h": 24
+    },
+    "door": {
+      "x": 176,
+      "y": 384,
+      "w": 32,
+      "h": 32
+    },
+    "plant_table": {
+      "x": 208,
+      "y": 824,
+      "w": 16,
+      "h": 24
+    }
+  },
+  "characters": {
+    "rocky": { "sheet": "adam_idle", "facing": "down" },
+    "interviewer": { "sheet": "amelia_idle", "facing": "up" }
+  },
+  "player": { "character": "interviewer", "x": 112, "y": 114 },
+  "objects": [
+    {"sprite": "bookshelf_a", "x": 18, "y": 14},
+    {"sprite": "bookshelf_b", "x": 50, "y": 14},
+    {"sprite": "fireplace", "x": 86, "y": 10},
+    {"sprite": "world_map", "x": 120, "y": 6, "layer": "wall"},
+    {"sprite": "plant_tall", "x": 150, "y": 20},
+    {"sprite": "rug", "x": 64, "y": 92, "layer": "floor"},
+    {"sprite": "chair_front", "x": 88, "y": 48, "sortY": 71},
+    {"character": "rocky", "x": 88, "y": 40},
+    {"sprite": "exec_desk", "x": 72, "y": 66},
+    {"sprite": "chair_back", "x": 88, "y": 114},
+    {"sprite": "floor_lamp", "x": 48, "y": 54},
+    {"sprite": "side_table", "x": 132, "y": 70},
+    {"sprite": "table_lamp", "x": 132, "y": 62, "sortY": 103, "solid": false},
+    {"sprite": "globe", "x": 150, "y": 70},
+    {"sprite": "sofa", "x": 18, "y": 108},
+    {"sprite": "coffee_table", "x": 22, "y": 138},
+    {"sprite": "palm", "x": 140, "y": 110},
+    {"sprite": "vase", "x": 128, "y": 138},
+    {"sprite": "plant_table", "x": 156, "y": 132}
+  ]
+}
