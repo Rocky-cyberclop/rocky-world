@@ -8,6 +8,8 @@ type Dir = 'up' | 'down' | 'left' | 'right';
 
 /** The character the visitor controls with WASD / arrow keys. */
 export class Player extends Phaser.Physics.Arcade.Sprite {
+  /** false during cutscenes: the player stands still and ignores input */
+  controlsEnabled = true;
   private facing: Facing;
   private keys: Record<Dir, Phaser.Input.Keyboard.Key[]>;
 
@@ -51,7 +53,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
   preUpdate(time: number, delta: number): void {
     super.preUpdate(time, delta);
 
-    const down = (d: Dir) => this.keys[d].some((k) => k.isDown);
+    const down = (d: Dir) => this.controlsEnabled && this.keys[d].some((k) => k.isDown);
     const vx = (down('right') ? 1 : 0) - (down('left') ? 1 : 0);
     const vy = (down('down') ? 1 : 0) - (down('up') ? 1 : 0);
 

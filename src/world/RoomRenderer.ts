@@ -13,6 +13,10 @@ export const facingStart = (f: Facing) => FACING_ORDER.indexOf(f) * 6;
 export class RoomRenderer {
   /** invisible static bodies the player collides with */
   readonly solids: Phaser.Physics.Arcade.StaticGroup;
+  /** every visible object this renderer created (tiles, furniture, NPCs), e.g. for fade-ins */
+  readonly all: (Phaser.GameObjects.Image | Phaser.GameObjects.Sprite)[] = [];
+  /** NPC sprites by character name, e.g. 'rocky' */
+  readonly characters = new Map<string, Phaser.GameObjects.Sprite>();
 
   constructor(private readonly scene: Phaser.Scene, private readonly data: RoomScene) {
     this.solids = scene.physics.add.staticGroup();
@@ -64,7 +68,7 @@ export class RoomRenderer {
 
   private tile(ref: TileRef, x: number, y: number, depth: number): void {
     const frame = ref[1] * ROOM_BUILDER_COLS + ref[0];
-    this.scene.add.image(x * TILE, y * TILE, 'roomBuilder', frame).setOrigin(0).setDepth(depth);
+    this.all.push(this.scene.add.image(x * TILE, y * TILE, 'roomBuilder', frame).setOrigin(0).setDepth(depth));
   }
 
   private drawShell(): void {
@@ -101,9 +105,11 @@ export class RoomRenderer {
     if ('character' in obj) {
       const def = this.data.characters[obj.character];
       if (!def) return console.warn(`[Room] Unknown character "${obj.character}"`);
-      go = this.scene.add
+      const npc = this.scene.add
         .sprite(obj.x, obj.y, def.sheet, facingStart(def.facing))
         .play(`${obj.character}-idle-${def.facing}`);
+      this.characters.set(obj.character, npc);
+      go = npc;
       w = TILE;
       h = TILE * 2;
     } else {
@@ -114,6 +120,7 @@ export class RoomRenderer {
       h = rect.h;
     }
     go.setOrigin(0);
+    this.all.push(go);
 
     // front/back order
     if (obj.layer === 'floor') go.setDepth(DEPTH_FLOOR + obj.y);

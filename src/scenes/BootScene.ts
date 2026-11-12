@@ -13,14 +13,16 @@ export class BootScene extends Phaser.Scene {
     this.load.spritesheet('roomBuilder', ASSETS.roomBuilder, { frameWidth: TILE, frameHeight: TILE });
     this.load.spritesheet('adam_idle', ASSETS.adam_idle, { frameWidth: TILE, frameHeight: TILE * 2 });
     this.load.spritesheet('amelia_idle', ASSETS.amelia_idle, { frameWidth: TILE, frameHeight: TILE * 2 });
+    this.load.audio('blip', ASSETS.blip); // optional
 
     this.load.on(Phaser.Loader.Events.FILE_LOAD_ERROR, (file: Phaser.Loader.File) => {
+      if (file.key === 'blip') return console.info('[Boot] No blip.wav found, using the built-in beep.');
       console.error(`[Boot] Missing asset: ${file.url} — did you copy the LimeZu files into public/assets/limezu?`);
     });
   }
 
   create(): void {
-    this.scene.start('InterviewRoom');
+    this.scene.start('Start');
   }
 
   private drawLoadingBar(): void {

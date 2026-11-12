@@ -1,0 +1,18 @@
+{
+  "focus": "rocky",
+  "focusFadeMs": 600,
+  "roomFadeMs": 4400,
+  "ease": "Sine.easeInOut",
+  "speech": {
+    "speaker": "rocky",
+    "lines": [
+      "Dear employer, this is my privilege to meet you. My name is Rocky. I'm currently a Full Stack developer at Cyberlogitec Vietnam."
+    ],
+    "charsPerSecond": 30,
+    "blipEvery": 1,
+    "maxWidth": 140,
+    "fontSize": 4.2
+  },
+  "hint": "WASD to move",
+  "hintMs": 3500
+}

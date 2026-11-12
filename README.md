@@ -20,7 +20,16 @@ src/world/            RoomRenderer: builds a room from a scene JSON
 - Production check: `docker compose --profile prod up --build web` → http://localhost:8080
 
 ## Controls
-WASD or arrow keys move the interviewer. Add `?debug` to the URL to see collision boxes.
+- Click / any key on the start screen (this also unlocks sound).
+- Intro plays (about 5 s, cannot be skipped; controls unlock when it ends).
+- WASD or arrow keys move the interviewer. Top-right button mutes sound.
+- Add `?debug` to the URL to see collision boxes.
+
+## Intro cutscene
+Edit `content/cutscenes/intro.json`: `speech.lines` (one entry per sentence; the bubble's Next button
+shows the next one, OK closes it; Enter = Next, Esc = OK), typing speed (`charsPerSecond`), fade timings,
+`blipEvery` (2 = blip every 2nd letter). Typing sound: `public/assets/sfx/blip.wav`
+(if missing, a beep is generated in code).
 
 ## Editing the room
 Move furniture by changing `x` / `y` in `content/scenes/interview-room.json` (pixels, 16 px = 1 tile).

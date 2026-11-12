@@ -1,6 +1,8 @@
 import * as Phaser from 'phaser';
+import introData from '../../content/cutscenes/intro.json';
 import roomData from '../../content/scenes/interview-room.json';
 import type { RoomScene } from '../content/types';
+import { IntroCutscene, type IntroData } from '../cutscenes/IntroCutscene';
 import { Player } from '../entities/Player';
 import { RoomRenderer } from '../world/RoomRenderer';
 
@@ -23,6 +25,11 @@ export class InterviewRoomScene extends Phaser.Scene {
     const cam = this.cameras.main;
     cam.setBounds(0, 0, room.size.width, room.size.height);
     cam.centerOn(room.size.width / 2, room.size.height / 2);
-    cam.fadeIn(400, 0, 0, 0);
+
+    // intro cutscene, then hand over control
+    player.controlsEnabled = false;
+    void new IntroCutscene(this, room, [player], introData as IntroData).play().then(() => {
+      player.controlsEnabled = true;
+    });
   }
 }

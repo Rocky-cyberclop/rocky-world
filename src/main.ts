@@ -1,14 +1,17 @@
 import * as Phaser from 'phaser';
 import roomData from '../content/scenes/interview-room.json';
-import { TILE } from './config';
+import { BG_COLOR, TILE } from './config';
 import { BootScene } from './scenes/BootScene';
 import { InterviewRoomScene } from './scenes/InterviewRoomScene';
+import { StartScene } from './scenes/StartScene';
 import './style.css';
+
+document.documentElement.style.setProperty('--bg', BG_COLOR);
 
 new Phaser.Game({
   type: Phaser.AUTO,
   parent: 'game',
-  backgroundColor: '#22203a',
+  backgroundColor: BG_COLOR,
   pixelArt: true, // crisp pixels, no smoothing
   roundPixels: true,
   scale: {
@@ -23,5 +26,5 @@ new Phaser.Game({
     // open http://localhost:5173/?debug to see collision boxes
     arcade: { debug: new URLSearchParams(location.search).has('debug') },
   },
-  scene: [BootScene, InterviewRoomScene],
+  scene: [BootScene, StartScene, InterviewRoomScene],
 });
