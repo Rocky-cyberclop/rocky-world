@@ -190,6 +190,12 @@
       "w": 32,
       "h": 32
     },
+    "cv_paper": {
+      "x": 210,
+      "y": 454,
+      "w": 10,
+      "h": 11
+    },
     "plant_table": {
       "x": 208,
       "y": 824,
@@ -212,6 +218,7 @@
     {"sprite": "chair_front", "x": 88, "y": 48, "sortY": 71},
     {"character": "rocky", "x": 88, "y": 40},
     {"sprite": "exec_desk", "x": 72, "y": 66},
+    {"sprite": "cv_paper", "x": 78, "y": 86, "sortY": 115, "solid": false},
     {"sprite": "chair_back", "x": 88, "y": 114},
     {"sprite": "floor_lamp", "x": 48, "y": 54},
     {"sprite": "side_table", "x": 132, "y": 70},
@@ -222,5 +229,9 @@
     {"sprite": "palm", "x": 140, "y": 110},
     {"sprite": "vase", "x": 128, "y": 138},
     {"sprite": "plant_table", "x": 156, "y": 132}
+  ],
+  "interactions": [
+    { "id": "rocky", "x": 64, "y": 52, "w": 64, "h": 76, "prompt": "Talk", "action": "dialog:rocky", "anchor": [96, 38] },
+    { "id": "cv", "x": 66, "y": 106, "w": 26, "h": 22, "prompt": "Read CV", "action": "cv", "anchor": [83, 84] }
   ]
 }

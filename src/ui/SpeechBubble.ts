@@ -41,10 +41,16 @@ export class SpeechBubble {
     scene.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.destroy());
   }
 
+  /** The bubble's HTML element (e.g. to listen for clicks). */
+  get element(): HTMLDivElement {
+    return this.el;
+  }
+
   /** Types `text`; resolves when every letter is shown (or `finish()` is called). */
   say(text: string, opts: BubbleOptions): Promise<void> {
     this.full = text;
     this.shown = 0;
+    this.el.querySelector('.bubble-links')?.remove();
     this.textEl.textContent = '';
     this.el.style.opacity = '1';
     this.applyScale(opts);
@@ -74,6 +80,27 @@ export class SpeechBubble {
     this.textEl.textContent = this.full;
     this.layout();
     this.complete();
+  }
+
+  /** Show clickable links (opened in a new tab) under the text, until the next line. */
+  addLinks(links: { label: string; url: string }[]): void {
+    this.el.querySelector('.bubble-links')?.remove();
+    const row = document.createElement('div');
+    row.className = 'bubble-links';
+    for (const l of links) {
+      const a = document.createElement('a');
+      a.href = l.url;
+      a.textContent = l.label;
+      a.className = 'bubble-btn';
+      if (!l.url.startsWith('mailto:')) {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
+      a.addEventListener('click', (e) => e.stopPropagation());
+      row.append(a);
+    }
+    this.el.append(row);
+    this.layout();
   }
 
   /**

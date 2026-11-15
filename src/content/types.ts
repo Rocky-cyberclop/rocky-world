@@ -34,6 +34,22 @@ interface PlacedBase {
 
 export type SceneObject = (PlacedBase & { sprite: string }) | (PlacedBase & { character: string });
 
+/** A spot the visitor can use: feet inside the zone → "E  <prompt>" → run `action`. */
+export interface Interaction {
+  id: string;
+  /** zone in native px (compared against the player's feet) */
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  /** short verb shown next to the E key, e.g. "Talk" */
+  prompt: string;
+  /** what happens, e.g. "dialog:rocky" or "cv" */
+  action: string;
+  /** where the prompt floats (bottom-centre of the prompt), default: top-centre of the zone */
+  anchor?: [x: number, y: number];
+}
+
 export interface RoomScene {
   name: string;
   room: {
@@ -56,4 +72,6 @@ export interface RoomScene {
   /** the character the visitor controls, and where it starts (top-left of its 16x32 sprite) */
   player: { character: string; x: number; y: number };
   objects: SceneObject[];
+  /** things the visitor can talk to / use */
+  interactions?: Interaction[];
 }

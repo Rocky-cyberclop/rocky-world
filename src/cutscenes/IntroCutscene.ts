@@ -61,6 +61,12 @@ export class IntroCutscene {
     this.showHint();
   }
 
+  /** Close the intro bubble right away if it is still open (e.g. the visitor starts talking to Rocky). */
+  dismiss(): void {
+    this.bubble?.destroy();
+    this.bubble = undefined;
+  }
+
   // ---------- steps ----------
 
   private fade(targets: Phaser.GameObjects.Components.Alpha[], duration: number): Promise<void> {

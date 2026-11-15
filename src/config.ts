@@ -15,3 +15,6 @@ export const ASSETS = {
 
 /** Columns in Room_Builder_free_16x16.png (272px / 16). */
 export const ROOM_BUILDER_COLS = 17;
+
+/** Rocky's public CV (put the file at public/cv/Rocky-CV.pdf). BASE_URL keeps it working on GitHub Pages. */
+export const CV_URL = `${import.meta.env.BASE_URL}cv/Rocky-CV.pdf`;

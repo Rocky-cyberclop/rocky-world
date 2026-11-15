@@ -147,3 +147,197 @@ canvas {
   outline: 3px solid #f2c14e;
   outline-offset: 2px;
 }
+
+/* "E  Talk" prompt floating above something the player can use */
+.interact-prompt {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.25em 0.6em 0.25em 0.3em;
+  border: 2px solid #e8e4f5;
+  border-radius: 8px;
+  background: rgba(20, 18, 25, 0.82);
+  color: #e8e4f5;
+  font: inherit;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  pointer-events: auto;
+  animation: prompt-bob 1.6s ease-in-out infinite;
+}
+.interact-key {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.4em;
+  height: 1.4em;
+  border-radius: 5px;
+  background: #e8e4f5;
+  color: var(--ink);
+}
+.interact-prompt:hover {
+  border-color: #f2c14e;
+}
+.interact-prompt:focus-visible {
+  outline: 3px solid #f2c14e;
+  outline-offset: 2px;
+}
+@keyframes prompt-bob {
+  50% {
+    transform: translate(-50%, calc(-100% - 3px));
+  }
+}
+
+/* "Ask Rocky" question card */
+.choice-menu {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #fff;
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  pointer-events: auto;
+}
+.choice-title {
+  font-weight: 800;
+  opacity: 0.6;
+  font-size: 0.85em;
+  margin-bottom: 0.2em;
+}
+.choice-btn {
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  min-height: 32px;
+  padding: 0.1em 0.2em 0.1em 1.1em;
+  border: none;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+  position: relative;
+}
+.choice-btn.active {
+  color: #5a4fcf;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 2px;
+}
+.choice-btn.active::before {
+  content: '▶';
+  position: absolute;
+  left: 0.15em;
+  font-size: 0.7em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.choice-btn.done::after {
+  content: ' ✓';
+  color: #3a9a5b;
+}
+.choice-btn:focus-visible {
+  outline: 3px solid #f2c14e;
+  outline-offset: 2px;
+}
+
+.bubble-links {
+  display: flex;
+  gap: 1em;
+  margin-top: 0.3em;
+}
+.bubble-links .bubble-btn {
+  display: inline-flex;
+  align-items: center;
+  color: #5a4fcf;
+}
+
+/* CV viewer: a big sheet of paper over the dimmed game */
+.cv-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(10, 8, 14, 0.72);
+  pointer-events: auto;
+  z-index: 10;
+}
+.cv-paper {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: min(900px, 94vw);
+  height: 92vh;
+  background: #fff;
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.cv-paper.cv-compact {
+  height: auto;
+  width: min(460px, 92vw);
+}
+.cv-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 10px 16px;
+  border-bottom: 3px solid var(--ink);
+}
+.cv-title {
+  font-weight: 800;
+  font-size: 18px;
+}
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 0.2em;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 2px;
+  cursor: pointer;
+}
+.cv-btn:hover {
+  color: #5a4fcf;
+}
+.cv-btn:focus-visible {
+  outline: 3px solid #f2c14e;
+  outline-offset: 2px;
+}
+.cv-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #eee;
+}
+.cv-note {
+  margin: 0;
+  padding: 18px 16px 20px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* CV icon sits left of the mute button (same look) */
+.cv-icon-btn {
+  right: 64px;
+}

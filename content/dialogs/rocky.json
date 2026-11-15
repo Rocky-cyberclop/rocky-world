@@ -1,0 +1,62 @@
+{
+  "speaker": "rocky",
+  "menuTitle": "Ask Rocky",
+  "greeting": "What would you like to know?",
+  "again": "Anything else you'd like to know?",
+  "questions": [
+    {
+      "q": "Tell me about yourself",
+      "a": [
+        "I'm Tran Anh Hao, but you can call me Rocky. I'm a Full Stack Developer at CyberLogitec Vietnam in Ho Chi Minh City.",
+        "I work mainly with Java and Spring Boot, and I take features from start to finish: database, backend, frontend and deployment.",
+        "I also work directly with international clients and business analysts.",
+        "I have a Bachelor of IT from Can Tho University (GPA 3.58) and a TOEIC score of 880."
+      ]
+    },
+    {
+      "q": "What are your skills?",
+      "a": [
+        "Backend: Java, Spring Boot, NestJS, TypeScript and GraphQL, with PostgreSQL, MySQL, MS SQL Server and MongoDB.",
+        "Frontend: ReactJS, Next.js, React Query, MobX, Ant Design and MUI.",
+        "Tools: Docker, GitLab CI/CD, GitHub Actions and RabbitMQ.",
+        "I design systems with microservices, Clean Architecture and DDD, and I work in Agile/SCRUM teams."
+      ]
+    },
+    {
+      "q": "Your work experience?",
+      "a": [
+        "I've been at CyberLogitec Vietnam since May 2024.",
+        "I lead an ERP project from start to finish: development, deployment, BA discussions and client communication.",
+        "In the Logistics division, I built the core DDD architecture of an enterprise module for a global shipping line.",
+        "I also delivered full-stack features there with NestJS, Next.js and GraphQL.",
+        "As a sub-lead on internal tools, I helped make SQL queries about 15% faster and improved app performance by about 20%."
+      ]
+    },
+    {
+      "q": "What have you built?",
+      "a": [
+        "I built an accounting system's codebase, architecture and coding standards from scratch with Spring Boot, PostgreSQL and ReactJS.",
+        "On my own, I built a hotel booking system using microservices with Spring Boot, Kafka, PayPal and MongoDB.",
+        "I also built a product recommendation engine in Python using collaborative filtering.",
+        "With a team, I built a knowledge-sharing platform with NestJS, Next.js, Docker and PostgreSQL.",
+        "There I handled the full-stack, DevOps and database work."
+      ]
+    },
+    {
+      "q": "Can I see your CV?",
+      "a": ["Of course! It's on the desk in front of you."],
+      "action": "cv"
+    },
+    {
+      "q": "How can I contact you?",
+      "a": ["You can email me at trnnhhao@gmail.com or find me on LinkedIn. I'd be happy to hear from you!"],
+      "links": [
+        { "label": "Email me", "url": "mailto:trnnhhao@gmail.com" },
+        { "label": "LinkedIn", "url": "https://www.linkedin.com/in/tran-hao-0a3b9342a/" }
+      ]
+    }
+  ],
+  "goodbyeOption": "That's all, thank you!",
+  "goodbye": "Thank you for your time!",
+  "style": { "charsPerSecond": 40, "blipEvery": 2, "maxWidth": 176, "fontSize": 4.2 }
+}

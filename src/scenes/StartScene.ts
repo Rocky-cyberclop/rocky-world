@@ -1,5 +1,6 @@
 import * as Phaser from 'phaser';
 import { loadMuted } from '../audio/Blip';
+import { mountCvButton } from '../ui/CvButton';
 import { mountMuteButton } from '../ui/MuteButton';
 import { uiRoot } from '../ui/overlay';
 
@@ -15,6 +16,7 @@ export class StartScene extends Phaser.Scene {
   create(): void {
     this.sound.mute = loadMuted();
     mountMuteButton(this.game);
+    mountCvButton(this.game);
 
     const prompt = document.createElement('div');
     prompt.className = 'start-screen';
