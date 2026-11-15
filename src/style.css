@@ -270,8 +270,9 @@ canvas {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: min(900px, 94vw);
-  height: 92vh;
+  /* about half the old size: an A4 page fits whole, at a comfortable reading zoom */
+  width: min(560px, 94vw);
+  height: min(84vh, 820px);
   background: #fff;
   color: var(--ink);
   border: 3px solid var(--ink);

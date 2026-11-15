@@ -55,7 +55,7 @@ async function show(): Promise<void> {
     const frame = document.createElement('iframe');
     frame.className = 'cv-frame';
     frame.title = "Rocky's CV (PDF)";
-    frame.src = `${CV_URL}#view=FitH`;
+    frame.src = `${CV_URL}#view=FitH&pagemode=none`;
     paper.append(frame);
   } else {
     const note = document.createElement('p');
