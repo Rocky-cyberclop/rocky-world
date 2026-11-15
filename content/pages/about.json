@@ -1,0 +1,19 @@
+{
+  "name": "Tran Anh Hao (Rocky)",
+  "role": "Full Stack Engineer · ERP Technical Team Leader",
+  "location": "CyberLogitec Vietnam · Ho Chi Minh City",
+  "intro": "This is the plain version of my portfolio. The same story is told inside a small pixel-art game, if you'd like to play.",
+  "playLabel": "▶ Play the game",
+  "cvLabel": "Download CV (PDF)",
+  "sections": [
+    { "title": "About me", "dialog": "Tell me about yourself" },
+    { "title": "Experience", "card": "world-map" },
+    { "title": "What I've built", "dialog": "What have you built?" },
+    { "title": "Skills & certifications", "card": "bookshelf" },
+    { "title": "Languages", "card": "globe" },
+    { "title": "Things I'm into", "card": "fireplace" },
+    { "title": "Coming soon", "card": "door" },
+    { "title": "Contact", "dialog": "How can I contact you?" }
+  ],
+  "footer": "Built by Rocky with Phaser, TypeScript and Vite. Pixel art: LimeZu Modern Interiors."
+}

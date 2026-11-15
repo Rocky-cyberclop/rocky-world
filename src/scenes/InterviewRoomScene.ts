@@ -14,6 +14,7 @@ import { Player } from '../entities/Player';
 import { OPEN_CV_EVENT } from '../ui/CvButton';
 import { openCvViewer } from '../ui/CvViewer';
 import { openInfoCard, type CardData } from '../ui/InfoCard';
+import { mountTouchControls } from '../ui/TouchControls';
 import { Interactables } from '../world/Interactables';
 import { RoomRenderer } from '../world/RoomRenderer';
 
@@ -71,6 +72,10 @@ export class InterviewRoomScene extends Phaser.Scene {
       () => player.controlsEnabled && !this.busy,
       (zone) => void this.interact(zone),
     );
+
+    // joystick + A button (only visible on touch screens)
+    const unmountTouch = mountTouchControls();
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, unmountTouch);
 
     // top-right CV button: opens the viewer unless a dialog is already open
     const onCvButton = () => void this.run('cv');

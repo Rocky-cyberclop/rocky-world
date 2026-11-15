@@ -1,11 +1,12 @@
 import * as Phaser from 'phaser';
 import type { Interaction } from '../content/types';
-import { canvasBox, toPage, uiRoot } from '../ui/overlay';
+import { canvasBox, isTouch, toPage, uiRoot } from '../ui/overlay';
+import { INTERACT_EVENT } from '../ui/TouchControls';
 
 /**
  * Spots in the room the visitor can use (talk to Rocky, read the CV, ...).
  * When the player's feet are inside a zone, a small "E  Talk" prompt appears above it.
- * E / Enter, or a click on the prompt, runs the zone's action.
+ * E / Enter, a click / tap on the prompt, or the touch "A" button runs the zone's action.
  */
 export class Interactables {
   private readonly el: HTMLButtonElement;
@@ -39,6 +40,7 @@ export class Interactables {
     uiRoot().append(this.el);
 
     window.addEventListener('keydown', this.onKey);
+    window.addEventListener(INTERACT_EVENT, this.onInteractButton);
     scene.scale.on(Phaser.Scale.Events.RESIZE, this.onResize);
     scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
     scene.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.destroy());
@@ -46,6 +48,8 @@ export class Interactables {
 
   destroy(): void {
     window.removeEventListener('keydown', this.onKey);
+    window.removeEventListener(INTERACT_EVENT, this.onInteractButton);
+    document.body.classList.remove('can-interact');
     this.scene.scale.off(Phaser.Scale.Events.RESIZE, this.onResize);
     this.scene.events.off(Phaser.Scenes.Events.UPDATE, this.update, this);
     this.el.remove();
@@ -61,6 +65,8 @@ export class Interactables {
       this.trigger();
     }
   };
+
+  private readonly onInteractButton = () => this.trigger();
 
   private trigger(): void {
     const zone = this.current;
@@ -89,12 +95,13 @@ export class Interactables {
   private setCurrent(zone: Interaction | undefined): void {
     if (zone === this.current) return;
     this.current = zone;
+    document.body.classList.toggle('can-interact', !!zone); // lights up the touch "A" button
     if (!zone) {
       this.el.style.display = 'none';
       return;
     }
     this.labelEl.textContent = zone.prompt;
-    this.el.setAttribute('aria-label', `Press E to ${zone.prompt}`);
+    this.el.setAttribute('aria-label', isTouch() ? zone.prompt : `Press E to ${zone.prompt}`);
     this.el.style.display = '';
     this.place();
   }
@@ -106,7 +113,7 @@ export class Interactables {
     const game = this.scene.game;
     const [ax, ay] = z.anchor ?? [z.x + z.w / 2, z.y];
     const p = toPage(game, ax, ay);
-    this.el.style.fontSize = `${Math.max(13, 3.6 * canvasBox(game).scale)}px`;
+    this.el.style.fontSize = `${Math.max(isTouch() ? 16 : 13, 3.6 * canvasBox(game).scale)}px`;
     this.el.style.left = `${p.x}px`;
     this.el.style.top = `${p.y}px`;
   }

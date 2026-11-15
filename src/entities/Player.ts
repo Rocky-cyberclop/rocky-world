@@ -1,12 +1,13 @@
 import * as Phaser from 'phaser';
 import { TILE } from '../config';
 import type { CharacterDef, Facing } from '../content/types';
+import { stick } from '../ui/TouchControls';
 import { facingStart } from '../world/RoomRenderer';
 
 const SPEED = 60; // px per second (native resolution)
 type Dir = 'up' | 'down' | 'left' | 'right';
 
-/** The character the visitor controls with WASD / arrow keys. */
+/** The character the visitor controls with WASD / arrow keys, or the on-screen joystick on touch screens. */
 export class Player extends Phaser.Physics.Arcade.Sprite {
   /** false during cutscenes: the player stands still and ignores input */
   controlsEnabled = true;
@@ -54,8 +55,12 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     super.preUpdate(time, delta);
 
     const down = (d: Dir) => this.controlsEnabled && this.keys[d].some((k) => k.isDown);
-    const vx = (down('right') ? 1 : 0) - (down('left') ? 1 : 0);
-    const vy = (down('down') ? 1 : 0) - (down('up') ? 1 : 0);
+    let vx = (down('right') ? 1 : 0) - (down('left') ? 1 : 0);
+    let vy = (down('down') ? 1 : 0) - (down('up') ? 1 : 0);
+    if (vx === 0 && vy === 0 && this.controlsEnabled) {
+      vx = stick.x;
+      vy = stick.y;
+    }
 
     const v = new Phaser.Math.Vector2(vx, vy).normalize().scale(SPEED);
     this.setVelocity(v.x, v.y);

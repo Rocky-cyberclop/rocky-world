@@ -14,3 +14,27 @@ export function toPage(game: Phaser.Game, x: number, y: number): { x: number; y:
   const b = canvasBox(game);
   return { x: b.left + x * b.scale, y: b.top + y * b.scale };
 }
+
+/** true on phones / tablets (set by detectTouch() in main.ts as `body.touch`). */
+export const isTouch = (): boolean => document.body.classList.contains('touch');
+
+/**
+ * Phone held upright: the room is small at the top of the screen, so the speech bubble docks
+ * under it and the question menu becomes a bottom sheet. (Tablets keep the floating bubble.)
+ */
+export const isDocked = (): boolean =>
+  isTouch() && window.innerHeight >= window.innerWidth && window.innerWidth < 600;
+
+/**
+ * Turn on touch mode for coarse pointers (phones, tablets), or as soon as the screen is touched.
+ * Fires a resize so the game re-fits into its new (portrait) box.
+ */
+export function detectTouch(): void {
+  const on = () => {
+    if (isTouch()) return;
+    document.body.classList.add('touch');
+    window.dispatchEvent(new Event('resize'));
+  };
+  if (matchMedia('(pointer: coarse)').matches) on();
+  window.addEventListener('touchstart', on, { once: true, passive: true });
+}

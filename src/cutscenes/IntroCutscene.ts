@@ -1,7 +1,7 @@
 import * as Phaser from 'phaser';
 import { Blip } from '../audio/Blip';
 import { SpeechBubble } from '../ui/SpeechBubble';
-import { canvasBox, toPage, uiRoot } from '../ui/overlay';
+import { canvasBox, isTouch, toPage, uiRoot } from '../ui/overlay';
 import type { RoomRenderer } from '../world/RoomRenderer';
 
 export interface IntroData {
@@ -19,6 +19,8 @@ export interface IntroData {
     fontSize: number;
   };
   hint?: string;
+  /** hint on phones / tablets (joystick instead of keys) */
+  hintTouch?: string;
   hintMs?: number;
 }
 
@@ -130,11 +132,12 @@ export class IntroCutscene {
   }
 
   private showHint(): void {
-    if (!this.data.hint) return;
+    const text = (isTouch() && this.data.hintTouch) || this.data.hint;
+    if (!text) return;
     const game = this.scene.game;
     const el = document.createElement('div');
     el.className = 'hint';
-    el.textContent = this.data.hint;
+    el.textContent = text;
     el.style.opacity = '0';
     const place = () => {
       const p = toPage(game, game.scale.width / 2, game.scale.height - 14);

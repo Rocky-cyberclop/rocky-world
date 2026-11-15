@@ -14,5 +14,6 @@
     "fontSize": 4.2
   },
   "hint": "WASD to move",
+  "hintTouch": "Drag the joystick to move",
   "hintMs": 3500
 }

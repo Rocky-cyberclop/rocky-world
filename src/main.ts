@@ -4,9 +4,14 @@ import { BG_COLOR, TILE } from './config';
 import { BootScene } from './scenes/BootScene';
 import { InterviewRoomScene } from './scenes/InterviewRoomScene';
 import { StartScene } from './scenes/StartScene';
+import { detectTouch } from './ui/overlay';
 import './style.css';
 
 document.documentElement.style.setProperty('--bg', BG_COLOR);
+// room size in tiles: style.css uses it to size the game box on phones held upright
+document.documentElement.style.setProperty('--room-w', String(roomData.room.tilesWide));
+document.documentElement.style.setProperty('--room-h', String(roomData.room.tilesHigh));
+detectTouch();
 
 new Phaser.Game({
   type: Phaser.AUTO,

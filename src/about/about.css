@@ -1,0 +1,250 @@
+/* Plain page ("skip the game"). Mobile first: one column, then side-by-side header from 720px. */
+:root {
+  --bg: #141219;
+  --paper: #fff;
+  --soft: #f4f1ff;
+  --font: 'Nunito', system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body.about {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  /* keep content clear of notches / rounded corners */
+  padding: max(16px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+}
+
+#about {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ---------- header ---------- */
+.about-header,
+.about-section {
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.about-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 46vh;
+  object-fit: cover;
+  object-position: center 30%;
+  image-rendering: pixelated;
+  background: var(--bg);
+  border-bottom: 3px solid var(--ink);
+}
+
+.about-intro {
+  padding: 16px 16px 18px;
+}
+
+.about-name {
+  margin: 0;
+  font-size: clamp(24px, 6vw, 34px);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.about-role {
+  margin: 6px 0 0;
+  font-weight: 800;
+  font-size: clamp(15px, 3.8vw, 18px);
+  color: var(--accent);
+}
+
+.about-loc {
+  margin: 2px 0 0;
+  font-weight: 700;
+  font-size: 15px;
+  opacity: 0.65;
+}
+
+.about-lead {
+  margin: 12px 0 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.about-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px; /* comfortable tap target */
+  padding: 0 14px;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: var(--soft);
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 15px;
+  text-decoration: none;
+}
+.about-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.about-btn-primary {
+  background: var(--focus);
+}
+.about-btn:focus-visible,
+.about .cv-btn:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- sections ---------- */
+.about-h2 {
+  margin: 0;
+  padding: 12px 16px;
+  font-size: 18px;
+  font-weight: 800;
+  border-bottom: 3px solid var(--ink);
+}
+
+.about-body {
+  /* .card-body (from the game) gives font + spacing; the page scrolls, not the box */
+  overflow: visible;
+  padding: 14px 16px 18px;
+}
+.about-body > .card-heading:first-child {
+  margin-top: 0;
+}
+
+.about-footer {
+  padding: 8px 4px 0;
+  color: #e8e4f5;
+  opacity: 0.7;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* game card styles that the page needs too (style.css isn't loaded here) */
+.card-body {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.card-body > * + * {
+  margin-top: 12px;
+}
+
+/* ---------- small phones ---------- */
+@media (max-width: 360px) {
+  .about-btn {
+    flex: 1 1 100%; /* one button per row */
+  }
+  .about-body,
+  .about-intro {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .card-timeline {
+    padding-left: 14px;
+  }
+  .card-tl-item::before {
+    left: -22px;
+  }
+}
+
+/* ---------- tablet / desktop: picture beside the intro ---------- */
+@media (min-width: 720px) {
+  body.about {
+    padding-top: 32px;
+    padding-bottom: 40px;
+  }
+  #about {
+    gap: 18px;
+  }
+  .about-header {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .about-hero {
+    width: 42%;
+    max-height: none;
+    border-bottom: none;
+    border-right: 3px solid var(--ink);
+  }
+  .about-intro {
+    flex: 1;
+    padding: 22px 24px;
+    align-self: center;
+  }
+  .about-h2 {
+    padding: 14px 24px;
+  }
+  .about-body {
+    padding: 16px 24px 22px;
+  }
+}
+
+/* ---------- print: plain black on white, no buttons that do nothing on paper ---------- */
+@media print {
+  body.about {
+    background: #fff;
+    padding: 0;
+  }
+  .about-header,
+  .about-section {
+    border: none;
+    border-radius: 0;
+    break-inside: avoid;
+  }
+  .about-hero,
+  .about-btn-primary,
+  .about-footer {
+    display: none;
+  }
+  .about-h2 {
+    padding-left: 0;
+    border-bottom: 2px solid #000;
+  }
+  .about-body,
+  .about-intro {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .about-btn {
+    border: none;
+    padding: 0;
+    min-height: 0;
+    background: none;
+    text-decoration: underline;
+  }
+}

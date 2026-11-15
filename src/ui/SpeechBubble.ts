@@ -1,5 +1,5 @@
 import * as Phaser from 'phaser';
-import { canvasBox, toPage, uiRoot } from './overlay';
+import { canvasBox, isDocked, isTouch, toPage, uiRoot } from './overlay';
 
 export interface BubbleOptions {
   /** letters per second */
@@ -182,18 +182,42 @@ export class SpeechBubble {
     this.layout();
   }
 
-  /** Size the font for the current canvas scale and keep the bubble above the speaker's head. */
+  /**
+   * Size the font for the current canvas scale and keep the bubble above the speaker's head.
+   * Phones held upright: the bubble docks full-width under the room instead (the room is small there).
+   */
   private layout(): void {
     if (!this.opts) return;
     const game = this.scene.game;
     const box = canvasBox(game);
     const s = box.scale;
+    const st = this.el.style;
+    st.visibility = this.shown === 0 ? 'hidden' : 'visible';
 
-    this.el.style.fontSize = `${this.opts.fontSize * s}px`;
-    this.el.style.padding = `${2.5 * s}px ${4 * s}px`;
-    this.el.style.setProperty('--btn-font', `${Math.max(13, this.opts.fontSize * 0.85 * s)}px`);
-    this.el.style.maxWidth = `${this.opts.maxWidth * s}px`;
-    this.el.style.visibility = this.shown === 0 ? 'hidden' : 'visible';
+    const docked = isDocked();
+    this.el.classList.toggle('bubble-docked', docked);
+    if (docked) {
+      const top = box.top + box.height + 10;
+      st.fontSize = '16px';
+      st.padding = '12px 14px';
+      st.setProperty('--btn-font', '16px');
+      st.maxWidth = '';
+      st.left = '12px';
+      st.right = '12px';
+      st.top = `${top}px`;
+      // never run under the joystick: scroll inside the bubble if the text is long
+      st.maxHeight = `${Math.max(120, window.innerHeight - top - 175)}px`;
+      return;
+    }
+
+    // never smaller than readable text, even when the room is drawn small
+    const font = Math.max(isTouch() ? 15 : 14, this.opts.fontSize * s);
+    st.fontSize = `${font}px`;
+    st.padding = `${Math.max(8, 2.5 * s)}px ${Math.max(10, 4 * s)}px`;
+    st.setProperty('--btn-font', `${Math.max(isTouch() ? 16 : 13, this.opts.fontSize * 0.85 * s)}px`);
+    st.maxWidth = `${Math.max(this.opts.maxWidth * s, Math.min(320, window.innerWidth - 16))}px`;
+    st.right = '';
+    st.maxHeight = '';
 
     // anchor = just above the top-centre of the speaker's head
     const head = toPage(game, this.speaker.x + this.speaker.width / 2, this.speaker.y + 2);
@@ -201,14 +225,16 @@ export class SpeechBubble {
     const h = this.el.offsetHeight;
     const tail = 16; // px reserved for the tail
 
-    const minX = box.left + 4;
-    const maxX = box.left + box.width - 4 - w;
+    // stay inside the room; if the bubble is wider than the room, stay inside the window
+    const inRoom = w <= box.width - 8;
+    const minX = inRoom ? box.left + 4 : 8;
+    const maxX = inRoom ? box.left + box.width - 4 - w : window.innerWidth - 8 - w;
     const left = Phaser.Math.Clamp(head.x - w / 2, minX, Math.max(minX, maxX));
-    const top = Math.max(box.top + 2, head.y - h - tail);
+    const top = Math.max(inRoom ? box.top + 2 : 8, head.y - h - tail);
 
-    this.el.style.left = `${left}px`;
-    this.el.style.top = `${top}px`;
+    st.left = `${left}px`;
+    st.top = `${top}px`;
     // keep the tail pointing at the head even when the bubble is pushed sideways
-    this.el.style.setProperty('--tail-x', `${Phaser.Math.Clamp(head.x - left, 18, w - 18)}px`);
+    st.setProperty('--tail-x', `${Phaser.Math.Clamp(head.x - left, 18, w - 18)}px`);
   }
 }

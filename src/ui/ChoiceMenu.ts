@@ -1,5 +1,5 @@
 import * as Phaser from 'phaser';
-import { canvasBox, uiRoot } from './overlay';
+import { canvasBox, isDocked, uiRoot } from './overlay';
 
 export interface MenuOption {
   label: string;
@@ -91,16 +91,24 @@ export class ChoiceMenu {
 
   private cleanup?: () => void;
 
-  /** Right side of the room, vertically around the middle; scales with the canvas. */
+  /** Right side of the room, vertically around the middle; scales with the canvas. Phones held upright: a bottom sheet. */
   private layout(): void {
     const el = this.el;
     if (!el) return;
+    const st = el.style;
+    const docked = isDocked();
+    el.classList.toggle('choice-sheet', docked);
+    if (docked) {
+      // position, size and font come from .choice-sheet in style.css
+      for (const k of ['fontSize', 'padding', 'maxWidth', 'right', 'top'] as const) st[k] = '';
+      return;
+    }
     const box = canvasBox(this.scene.game);
     const s = box.scale;
-    el.style.fontSize = `${Math.max(13, this.fontSize * s)}px`;
-    el.style.padding = `${2.5 * s}px ${3.5 * s}px`;
-    el.style.maxWidth = `${Math.min(box.width * 0.6, 78 * s)}px`;
-    el.style.right = `${window.innerWidth - (box.left + box.width) + 6 * s}px`;
-    el.style.top = `${box.top + 58 * s}px`;
+    st.fontSize = `${Math.max(14, this.fontSize * s)}px`;
+    st.padding = `${Math.max(8, 2.5 * s)}px ${Math.max(10, 3.5 * s)}px`;
+    st.maxWidth = `${Math.max(Math.min(box.width * 0.6, 78 * s), Math.min(240, window.innerWidth - 16))}px`;
+    st.right = `${Math.max(8, window.innerWidth - (box.left + box.width) + 6 * s)}px`;
+    st.top = `${box.top + 58 * s}px`;
   }
 }
