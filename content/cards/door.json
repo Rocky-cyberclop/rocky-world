@@ -1,0 +1,12 @@
+{
+  "title": "Door",
+  "subtitle": "Projects: coming soon",
+  "blocks": [
+    { "type": "text", "text": "More rooms are being built behind this door." },
+    {
+      "type": "text",
+      "text": "Next up: my hotel booking system, built with microservices (Spring Boot, Kafka, PayPal and MongoDB)."
+    },
+    { "type": "text", "text": "Check back soon!" }
+  ]
+}

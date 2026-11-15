@@ -185,9 +185,9 @@
       "h": 24
     },
     "door": {
-      "x": 176,
+      "x": 192,
       "y": 384,
-      "w": 32,
+      "w": 16,
       "h": 32
     },
     "cv_paper": {
@@ -204,34 +204,226 @@
     }
   },
   "characters": {
-    "rocky": { "sheet": "adam_idle", "facing": "down" },
-    "interviewer": { "sheet": "amelia_idle", "facing": "up" }
+    "rocky": {
+      "sheet": "adam_idle",
+      "facing": "down"
+    },
+    "interviewer": {
+      "sheet": "amelia_idle",
+      "facing": "up"
+    }
   },
-  "player": { "character": "interviewer", "x": 112, "y": 114 },
+  "player": {
+    "character": "interviewer",
+    "x": 112,
+    "y": 114
+  },
   "objects": [
-    {"sprite": "bookshelf_a", "x": 18, "y": 14},
-    {"sprite": "bookshelf_b", "x": 50, "y": 14},
-    {"sprite": "fireplace", "x": 86, "y": 10},
-    {"sprite": "world_map", "x": 120, "y": 6, "layer": "wall"},
-    {"sprite": "plant_tall", "x": 150, "y": 20},
-    {"sprite": "rug", "x": 64, "y": 92, "layer": "floor"},
-    {"sprite": "chair_front", "x": 88, "y": 48, "sortY": 71},
-    {"character": "rocky", "x": 88, "y": 40},
-    {"sprite": "exec_desk", "x": 72, "y": 66},
-    {"sprite": "cv_paper", "x": 78, "y": 86, "sortY": 115, "solid": false},
-    {"sprite": "chair_back", "x": 88, "y": 114},
-    {"sprite": "floor_lamp", "x": 48, "y": 54},
-    {"sprite": "side_table", "x": 132, "y": 70},
-    {"sprite": "table_lamp", "x": 132, "y": 62, "sortY": 103, "solid": false},
-    {"sprite": "globe", "x": 150, "y": 70},
-    {"sprite": "sofa", "x": 18, "y": 108},
-    {"sprite": "coffee_table", "x": 22, "y": 138},
-    {"sprite": "palm", "x": 140, "y": 110},
-    {"sprite": "vase", "x": 128, "y": 138},
-    {"sprite": "plant_table", "x": 156, "y": 132}
+    {
+      "sprite": "bookshelf_a",
+      "x": 18,
+      "y": 14
+    },
+    {
+      "sprite": "bookshelf_b",
+      "x": 50,
+      "y": 14
+    },
+    {
+      "sprite": "fireplace",
+      "x": 86,
+      "y": 10
+    },
+    {
+      "sprite": "world_map",
+      "x": 120,
+      "y": 6,
+      "layer": "wall"
+    },
+    {
+      "sprite": "door",
+      "x": 156,
+      "y": 1,
+      "layer": "wall"
+    },
+    {
+      "sprite": "plant_tall",
+      "x": 16,
+      "y": 50
+    },
+    {
+      "sprite": "rug",
+      "x": 64,
+      "y": 92,
+      "layer": "floor"
+    },
+    {
+      "sprite": "chair_front",
+      "x": 88,
+      "y": 48,
+      "sortY": 71
+    },
+    {
+      "character": "rocky",
+      "x": 88,
+      "y": 40
+    },
+    {
+      "sprite": "exec_desk",
+      "x": 72,
+      "y": 66
+    },
+    {
+      "sprite": "cv_paper",
+      "x": 78,
+      "y": 86,
+      "sortY": 115,
+      "solid": false
+    },
+    {
+      "sprite": "chair_back",
+      "x": 88,
+      "y": 114
+    },
+    {
+      "sprite": "floor_lamp",
+      "x": 48,
+      "y": 54
+    },
+    {
+      "sprite": "side_table",
+      "x": 132,
+      "y": 70
+    },
+    {
+      "sprite": "table_lamp",
+      "x": 132,
+      "y": 62,
+      "sortY": 103,
+      "solid": false
+    },
+    {
+      "sprite": "globe",
+      "x": 150,
+      "y": 70
+    },
+    {
+      "sprite": "sofa",
+      "x": 18,
+      "y": 108
+    },
+    {
+      "sprite": "coffee_table",
+      "x": 22,
+      "y": 138
+    },
+    {
+      "sprite": "palm",
+      "x": 140,
+      "y": 110
+    },
+    {
+      "sprite": "vase",
+      "x": 128,
+      "y": 138
+    },
+    {
+      "sprite": "plant_table",
+      "x": 156,
+      "y": 132
+    }
   ],
   "interactions": [
-    { "id": "rocky", "x": 64, "y": 52, "w": 64, "h": 76, "prompt": "Talk", "action": "dialog:rocky", "anchor": [96, 38] },
-    { "id": "cv", "x": 66, "y": 106, "w": 26, "h": 22, "prompt": "Read CV", "action": "cv", "anchor": [83, 84] }
+    {
+      "id": "rocky",
+      "x": 64,
+      "y": 52,
+      "w": 64,
+      "h": 76,
+      "prompt": "Talk",
+      "action": "dialog:rocky",
+      "anchor": [
+        96,
+        38
+      ]
+    },
+    {
+      "id": "cv",
+      "x": 66,
+      "y": 106,
+      "w": 26,
+      "h": 22,
+      "prompt": "Read CV",
+      "action": "cv",
+      "anchor": [
+        83,
+        84
+      ]
+    },
+    {
+      "id": "bookshelf",
+      "x": 18,
+      "y": 44,
+      "w": 64,
+      "h": 12,
+      "prompt": "Browse",
+      "action": "card:bookshelf",
+      "anchor": [
+        50,
+        20
+      ]
+    },
+    {
+      "id": "fireplace",
+      "x": 86,
+      "y": 56,
+      "w": 32,
+      "h": 10,
+      "prompt": "Warm up",
+      "action": "card:fireplace",
+      "anchor": [
+        102,
+        24
+      ]
+    },
+    {
+      "id": "world_map",
+      "x": 120,
+      "y": 32,
+      "w": 32,
+      "h": 14,
+      "prompt": "View map",
+      "action": "card:world-map",
+      "anchor": [
+        136,
+        18
+      ]
+    },
+    {
+      "id": "door",
+      "x": 152,
+      "y": 32,
+      "w": 24,
+      "h": 14,
+      "prompt": "Open",
+      "action": "card:door",
+      "anchor": [
+        164,
+        14
+      ]
+    },
+    {
+      "id": "globe",
+      "x": 144,
+      "y": 84,
+      "w": 32,
+      "h": 26,
+      "prompt": "Spin",
+      "action": "card:globe",
+      "anchor": [
+        158,
+        70
+      ]
+    }
   ]
 }

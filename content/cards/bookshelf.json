@@ -1,0 +1,22 @@
+{
+  "title": "Bookshelf",
+  "subtitle": "Skills & certifications",
+  "blocks": [
+    { "type": "heading", "text": "Skills" },
+    { "type": "tags", "label": "Backend", "items": ["Java", "Spring Boot", "NestJS", "TypeScript", "GraphQL"] },
+    { "type": "tags", "label": "Databases", "items": ["PostgreSQL", "MySQL", "MS SQL Server", "MongoDB"] },
+    { "type": "tags", "label": "Frontend", "items": ["ReactJS", "Next.js", "React Query", "MobX", "Ant Design", "MUI"] },
+    { "type": "tags", "label": "DevOps & tools", "items": ["Docker", "GitLab CI/CD", "GitHub Actions", "RabbitMQ"] },
+    { "type": "tags", "label": "Architecture & process", "items": ["Microservices", "Clean Architecture", "DDD", "Agile / SCRUM"] },
+    { "type": "heading", "text": "Certifications" },
+    {
+      "type": "list",
+      "items": [
+        "TOEIC 880 · IIG Vietnam · Jan 2024",
+        "Claude 101 · Anthropic · Sep 2025",
+        "Claude Code in Action · Anthropic · Oct 2025",
+        "Model Context Protocol: Advanced Topics · Anthropic · Nov 2025"
+      ]
+    }
+  ]
+}

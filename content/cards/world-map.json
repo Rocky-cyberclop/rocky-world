@@ -1,0 +1,47 @@
+{
+  "title": "World map",
+  "subtitle": "My journey so far",
+  "blocks": [
+    {
+      "type": "timeline",
+      "items": [
+        {
+          "when": "Jan 2026 – now",
+          "title": "ERP Technical Team Leader",
+          "org": "CyberLogitec Vietnam · Ho Chi Minh City",
+          "points": [
+            "Own the ERP project end to end: development and deployment.",
+            "Lead discussions with BAs and act as the main client contact.",
+            "Guide the team on business and technical issues, and step in first on hard problems."
+          ]
+        },
+        {
+          "when": "Apr 2025 – Dec 2025",
+          "title": "Full Stack Engineer (ODC)",
+          "org": "CyberLogitec Vietnam",
+          "points": [
+            "Built an accounting system end to end: architecture, codebase and coding standards.",
+            "Built an internal IT asset management system (frontend, backend, DevOps).",
+            "As sub-lead: SQL about 15% faster, frontend about 20% faster, about 20% cleaner code.",
+            "Employee management platform with Java/Thymeleaf, Keycloak SSO and GitLab CI/CD."
+          ]
+        },
+        {
+          "when": "May 2024 – Mar 2025",
+          "title": "Full Stack Engineer (Logistics)",
+          "org": "CyberLogitec Vietnam",
+          "points": [
+            "Built the core DDD foundation of an enterprise logistics system for a global shipping line.",
+            "Internal planning/resource platform: Clean Architecture backend, GraphQL frontend, Docker + CI/CD, SCRUM.",
+            "Worked directly with BAs and the client."
+          ]
+        },
+        {
+          "when": "Aug 2020 – Dec 2024",
+          "title": "Bachelor of Engineering, Information Technology",
+          "org": "Can Tho University · GPA 3.58"
+        }
+      ]
+    }
+  ]
+}

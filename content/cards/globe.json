@@ -1,0 +1,11 @@
+{
+  "title": "Globe",
+  "subtitle": "Languages I speak",
+  "blocks": [
+    {
+      "type": "list",
+      "items": ["Vietnamese: native", "English: fluent (TOEIC 880)"]
+    },
+    { "type": "text", "text": "I use English every day with international clients and business analysts." }
+  ]
+}

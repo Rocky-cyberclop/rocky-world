@@ -1,0 +1,14 @@
+{
+  "title": "Fireplace",
+  "subtitle": "Things I'm into",
+  "blocks": [
+    {
+      "type": "list",
+      "items": [
+        "Making games: I build pixel-art games for fun. This portfolio is one of them.",
+        "AI-assisted coding: I took three Anthropic courses in 2025 and keep tuning my own Claude setup.",
+        "Cloud / AWS: I'm learning cloud architecture on AWS."
+      ]
+    }
+  ]
+}

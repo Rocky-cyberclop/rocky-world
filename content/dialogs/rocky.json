@@ -7,10 +7,10 @@
     {
       "q": "Tell me about yourself",
       "a": [
-        "I'm Tran Anh Hao, but you can call me Rocky. I'm a Full Stack Developer at CyberLogitec Vietnam in Ho Chi Minh City.",
+        "I'm Tran Anh Hao, but you can call me Rocky. I'm a Full Stack Engineer and ERP Technical Team Leader at CyberLogitec Vietnam in Ho Chi Minh City.",
         "I work mainly with Java and Spring Boot, and I take features from start to finish: database, backend, frontend and deployment.",
         "I also work directly with international clients and business analysts.",
-        "I have a Bachelor of IT from Can Tho University (GPA 3.58) and a TOEIC score of 880."
+        "I have a Bachelor of Engineering in IT from Can Tho University (GPA 3.58) and a TOEIC score of 880."
       ]
     },
     {
@@ -26,7 +26,7 @@
       "q": "Your work experience?",
       "a": [
         "I've been at CyberLogitec Vietnam since May 2024.",
-        "I lead an ERP project from start to finish: development, deployment, BA discussions and client communication.",
+        "Since January 2026, I've been an ERP Technical Team Leader. I own the project end to end: development, deployment, BA discussions and client communication.",
         "In the Logistics division, I built the core DDD architecture of an enterprise module for a global shipping line.",
         "I also delivered full-stack features there with NestJS, Next.js and GraphQL.",
         "As a sub-lead on internal tools, I helped make SQL queries about 15% faster and improved app performance by about 20%."

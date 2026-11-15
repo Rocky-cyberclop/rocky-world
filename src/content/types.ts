@@ -44,7 +44,7 @@ export interface Interaction {
   h: number;
   /** short verb shown next to the E key, e.g. "Talk" */
   prompt: string;
-  /** what happens, e.g. "dialog:rocky" or "cv" */
+  /** what happens: "dialog:<name>", "card:<name>" (content/cards/<name>.json) or "cv" */
   action: string;
   /** where the prompt floats (bottom-centre of the prompt), default: top-centre of the zone */
   anchor?: [x: number, y: number];

@@ -1,4 +1,9 @@
 import * as Phaser from 'phaser';
+import bookshelfCard from '../../content/cards/bookshelf.json';
+import doorCard from '../../content/cards/door.json';
+import fireplaceCard from '../../content/cards/fireplace.json';
+import globeCard from '../../content/cards/globe.json';
+import worldMapCard from '../../content/cards/world-map.json';
 import introData from '../../content/cutscenes/intro.json';
 import rockyDialog from '../../content/dialogs/rocky.json';
 import roomData from '../../content/scenes/interview-room.json';
@@ -8,11 +13,21 @@ import { DialogRunner, type DialogData } from '../dialog/DialogRunner';
 import { Player } from '../entities/Player';
 import { OPEN_CV_EVENT } from '../ui/CvButton';
 import { openCvViewer } from '../ui/CvViewer';
+import { openInfoCard, type CardData } from '../ui/InfoCard';
 import { Interactables } from '../world/Interactables';
 import { RoomRenderer } from '../world/RoomRenderer';
 
 /** Dialogs by name, used by "dialog:<name>" actions. */
 const DIALOGS: Record<string, DialogData> = { rocky: rockyDialog as DialogData };
+
+/** Info cards by name, used by "card:<name>" actions (content/cards/<name>.json). */
+const CARDS: Record<string, CardData> = {
+  bookshelf: bookshelfCard as CardData,
+  'world-map': worldMapCard as CardData,
+  globe: globeCard as CardData,
+  fireplace: fireplaceCard as CardData,
+  door: doorCard as CardData,
+};
 
 /** Landing scene: a 1:1 interview in a manager's office. Visitor = interviewer (walks), Rocky = candidate (seated). */
 export class InterviewRoomScene extends Phaser.Scene {
@@ -96,6 +111,10 @@ export class InterviewRoomScene extends Phaser.Scene {
       if (!dialog || !speaker) return console.warn(`[Room] Unknown dialog "${action}"`);
       const next = await new DialogRunner(this, speaker, dialog).run();
       if (next) await this.runAction(next);
+    } else if (action.startsWith('card:')) {
+      const card = CARDS[action.slice('card:'.length)];
+      if (!card) return console.warn(`[Room] Unknown card "${action}"`);
+      await openInfoCard(card);
     } else if (action === 'cv') {
       await openCvViewer();
     } else {
