@@ -23,7 +23,7 @@ interface PlacedBase {
   y: number;
   /** floor = always under everything (rugs); wall = hung on the back wall. Default: y-sorted. */
   layer?: 'floor' | 'wall';
-  /** override the y used for front/back sorting (default: bottom edge of the sprite) */
+  /** override the y used for front/back sorting (default: bottom of the solid footprint if given, else bottom edge of the sprite) */
   sortY?: number;
   /**
    * Blocks the player? Default: true for y-sorted objects (footprint = bottom strip), false for floor/wall.

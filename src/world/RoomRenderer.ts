@@ -125,7 +125,9 @@ export class RoomRenderer {
     // front/back order
     if (obj.layer === 'floor') go.setDepth(DEPTH_FLOOR + obj.y);
     else if (obj.layer === 'wall') go.setDepth(DEPTH_WALL + obj.y);
-    else go.setDepth(obj.sortY ?? obj.y + h);
+    // default: sort by the bottom of the collision footprint (where the object touches the floor),
+    // not the sprite's bottom edge, which can be transparent padding below the art
+    else go.setDepth(obj.sortY ?? (Array.isArray(obj.solid) ? obj.y + obj.solid[1] + obj.solid[3] : obj.y + h));
 
     // collision footprint
     const solid = obj.solid ?? !obj.layer;

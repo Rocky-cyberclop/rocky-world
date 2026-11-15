@@ -222,17 +222,35 @@
     {
       "sprite": "bookshelf_a",
       "x": 18,
-      "y": 14
+      "y": 14,
+      "solid": [
+        0,
+        18,
+        32,
+        12
+      ]
     },
     {
       "sprite": "bookshelf_b",
       "x": 50,
-      "y": 14
+      "y": 14,
+      "solid": [
+        0,
+        18,
+        32,
+        12
+      ]
     },
     {
       "sprite": "fireplace",
       "x": 86,
-      "y": 10
+      "y": 10,
+      "solid": [
+        -2,
+        24,
+        36,
+        15
+      ]
     },
     {
       "sprite": "world_map",
@@ -249,7 +267,13 @@
     {
       "sprite": "plant_tall",
       "x": 16,
-      "y": 50
+      "y": 50,
+      "solid": [
+        3,
+        27,
+        13,
+        14
+      ]
     },
     {
       "sprite": "rug",
@@ -261,76 +285,143 @@
       "sprite": "chair_front",
       "x": 88,
       "y": 48,
-      "sortY": 71
+      "sortY": 71,
+      "solid": [
+        0,
+        20,
+        16,
+        6
+      ]
     },
     {
       "character": "rocky",
       "x": 88,
-      "y": 40
+      "y": 40,
+      "solid": false
     },
     {
       "sprite": "exec_desk",
       "x": 72,
-      "y": 66
+      "y": 66,
+      "solid": [
+        0,
+        0,
+        35,
+        40
+      ]
     },
     {
       "sprite": "cv_paper",
       "x": 78,
       "y": 86,
-      "sortY": 115,
+      "sortY": 107,
       "solid": false
     },
     {
       "sprite": "chair_back",
       "x": 88,
-      "y": 114
+      "y": 114,
+      "solid": [
+        3,
+        11,
+        12,
+        12
+      ]
     },
     {
       "sprite": "floor_lamp",
       "x": 48,
-      "y": 54
+      "y": 54,
+      "solid": [
+        1,
+        30,
+        13,
+        7
+      ]
     },
     {
       "sprite": "side_table",
       "x": 132,
-      "y": 70
+      "y": 70,
+      "solid": [
+        1,
+        16,
+        15,
+        9
+      ]
     },
     {
       "sprite": "table_lamp",
       "x": 132,
-      "y": 62,
-      "sortY": 103,
+      "y": 69,
+      "sortY": 96,
       "solid": false
     },
     {
       "sprite": "globe",
       "x": 150,
-      "y": 70
+      "y": 70,
+      "solid": [
+        3,
+        15,
+        10,
+        7
+      ]
     },
     {
       "sprite": "sofa",
       "x": 18,
-      "y": 108
+      "y": 108,
+      "solid": [
+        0,
+        16,
+        48,
+        15
+      ]
     },
     {
       "sprite": "coffee_table",
       "x": 22,
-      "y": 138
+      "y": 138,
+      "solid": [
+        6,
+        8,
+        36,
+        13
+      ]
     },
     {
       "sprite": "palm",
       "x": 140,
-      "y": 110
+      "y": 110,
+      "solid": [
+        11,
+        19,
+        11,
+        11
+      ]
     },
     {
       "sprite": "vase",
       "x": 128,
-      "y": 138
+      "y": 138,
+      "solid": [
+        4,
+        13,
+        11,
+        7
+      ]
     },
     {
       "sprite": "plant_table",
       "x": 156,
-      "y": 132
+      "y": 132,
+      "solid": [
+        0,
+        14,
+        16,
+        10
+      ]
     }
   ],
   "interactions": [
@@ -375,10 +466,10 @@
     },
     {
       "id": "fireplace",
-      "x": 86,
-      "y": 56,
-      "w": 32,
-      "h": 10,
+      "x": 84,
+      "y": 47,
+      "w": 36,
+      "h": 12,
       "prompt": "Warm up",
       "action": "card:fireplace",
       "anchor": [
